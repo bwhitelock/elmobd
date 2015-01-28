@@ -1,0 +1,16 @@
+import Tkinter as tk
+
+class MyDialog:
+
+    def __init__(self, parent):
+        top = self.top = tk.Toplevel(parent)
+        self.myLabel = tk.Label(top, text='Enter your username below')
+        self.myLabel.pack()
+        self.myEntryBox = tk.Entry(top)
+        self.myEntryBox.pack()
+        self.mySubmitButton = tk.Button(top, text='Submit', command=self.send)
+        self.mySubmitButton.pack()
+
+    def send(self):
+        self.username = self.myEntryBox.get()
+        self.top.destroy()
