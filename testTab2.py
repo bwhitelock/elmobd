@@ -39,11 +39,13 @@ class testTab2(Frame):
     def OnButtonClick(self):
         print "You clicked button1 !"
         self.master.menubar.deviceMenu.entryconfig("Clear", state="disabled")
-        self.master.notebook.tab(self.master.console,state='disabled')
+        #self.master.notebook.tab(self.master.console,state='disabled')
+        self.master.toolbar.carButton.config(state='disabled')
         #self.device.stop()
 
     def OnButton2Click(self):
         print "You clicked button2 !"
         self.master.menubar.deviceMenu.entryconfig("Clear", state="normal")
-        self.master.notebook.tab(self.master.console,state='normal')
+        #self.master.notebook.tab(self.master.console,state='normal')
+        self.master.toolbar.carButton.config(state='normal')
         #self.device.listen()
