@@ -7,8 +7,8 @@ from ttk import *
 #from PIL import Image, ImageTk
 from console import console
 from testTab2 import testTab2
-from engineTab import engineTab
-from tabTest import tabTest
+from generalTab import generalTab
+from dashboard import dashboard
 from MenuBar import MenuBar
 from myToolBar import ToolBar
 
@@ -29,8 +29,8 @@ class elmodb(Tkinter.Tk):
         self.notebook = Notebook(master, name='nb')
         self.notebook.pack(fill=BOTH,expand=True)
 
-        self.engineTab = engineTab(self.notebook, name='engineTab')
-        self.notebook.add(self.engineTab, text="Summary")
+        self.generalTab = generalTab(self.notebook, name='generalTab')
+        self.notebook.add(self.generalTab, text="General")
 
         self.console = console(self.notebook, name='console')
         self.notebook.add(self.console, text="Console")
@@ -41,9 +41,9 @@ class elmodb(Tkinter.Tk):
         self.notebook.add(self.testTab2, text="This Tab 2")
         self.notebook.hide(self.testTab2)
 
-        self.tabTest = tabTest(self.notebook, name='tabTest')
-        self.notebook.add(self.tabTest, text="tabTest")
-        self.notebook.hide(self.tabTest)
+        self.dashboard = dashboard(self.notebook, name='dashboard')
+        self.notebook.add(self.dashboard, text="Dashboard")
+        self.notebook.hide(self.dashboard)
 
         self.resizable(True,True)
         self.after(500,self.doCommand)

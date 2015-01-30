@@ -10,16 +10,16 @@ class ToolBar(Frame):
 
         #engineImg = Image.open("images/engine2.png")
         #eimg = ImageTk.PhotoImage(engineImg)  
-        engineFrame = Frame(toolbar, relief=RAISED)
-        engineImg = PhotoImage(file="images/engine2.png")
-        self.engineButton = Button(engineFrame, image=engineImg, command=self.onEngine, state=ACTIVE)
-        self.engineButton.image = engineImg
+        generalFrame = Frame(toolbar, relief=RAISED)
+        generalImg = PhotoImage(file="images/engine2.png")
+        self.generalButton = Button(generalFrame, image=generalImg, command=self.onEngine, state=ACTIVE)
+        self.generalButton.image = generalImg
         #engineButton.pack(side=LEFT, padx=2, pady=2)
         #engineButton.config(relief=SUNKEN)
-        self.engineButton.pack(padx=2, pady=2)
-        engineLabel = Label(engineFrame, text="Summary")
-        engineLabel.pack(padx=2,pady=2)
-        engineFrame.pack(side=LEFT, padx=2, pady=2)
+        self.generalButton.pack(padx=2, pady=2)
+        generalLabel = Label(generalFrame, text="Summary")
+        generalLabel.pack(padx=2,pady=2)
+        generalFrame.pack(side=LEFT, padx=2, pady=2)
 
         settingsFrame = Frame(toolbar, relief=GROOVE)
         #settingsImg = Image.open("images/settings.png")
@@ -63,12 +63,12 @@ class ToolBar(Frame):
 
     def onEngine(self):
         #self.parent.notebook.tab(self.parent.notebook.select(),state='hidden')
-        if not (str(self.parent.notebook.select()) == str(self.parent.engineTab)):
+        if not (str(self.parent.notebook.select()) == str(self.parent.generalTab)):
             self.parent.notebook.hide(self.parent.notebook.select())
-            self.parent.notebook.add(self.parent.engineTab)
-            self.parent.notebook.select(self.parent.engineTab)
+            self.parent.notebook.add(self.parent.generalTab)
+            self.parent.notebook.select(self.parent.generalTab)
             #self.parent.notebook.tab(self.engineTab,state='normal')
-        self.engineButton.config(state=ACTIVE)
+        self.generalButton.config(state=ACTIVE)
         #self.settingsButton.config(state=NORMAL)
         #self.dashboardButton.config(state=NORMAL)
         #self.carButton.config(state=NORMAL)
@@ -87,10 +87,10 @@ class ToolBar(Frame):
 
     def onDashboard(self):
         #self.parent.notebook.tab(self.parent.notebook.select(),state='hidden')
-        if not (str(self.parent.notebook.select()) == str(self.parent.tabTest)):
+        if not (str(self.parent.notebook.select()) == str(self.parent.dashboard)):
             self.parent.notebook.hide(self.parent.notebook.select())
-            self.parent.notebook.add(self.parent.tabTest)
-            self.parent.notebook.select(self.parent.tabTest)
+            self.parent.notebook.add(self.parent.dashboard)
+            self.parent.notebook.select(self.parent.dashboard)
             #self.parent.notebook.tab(self.engineTab,state='normal')
         self.dashboardButton.config(state=ACTIVE)
         #self.engineButton.config(state=NORMAL)

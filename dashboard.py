@@ -9,7 +9,7 @@ from testTab2 import testTab2
 from engineTab import engineTab
 import Queue
 
-class tabTest(Frame):
+class dashboard(Frame):
     #def __init__(self,parent,device,queue):
     #def __init__(self,parent,device,queue):
     def __init__(self,master=None,name=None):
