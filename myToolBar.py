@@ -63,10 +63,10 @@ class ToolBar(Frame):
 
     def onEngine(self):
         #self.parent.notebook.tab(self.parent.notebook.select(),state='hidden')
-        if not (str(self.parent.notebook.select()) == str(self.parent.generalTab)):
+        if not (str(self.parent.notebook.select()) == str(self.parent.general)):
             self.parent.notebook.hide(self.parent.notebook.select())
-            self.parent.notebook.add(self.parent.generalTab)
-            self.parent.notebook.select(self.parent.generalTab)
+            self.parent.notebook.add(self.parent.general)
+            self.parent.notebook.select(self.parent.general)
             #self.parent.notebook.tab(self.engineTab,state='normal')
         self.generalButton.config(state=ACTIVE)
         #self.settingsButton.config(state=NORMAL)
@@ -75,10 +75,10 @@ class ToolBar(Frame):
 
     def onSettings(self):
         #self.parent.notebook.tab(self.parent.notebook.select(),state='hidden')
-        if not (str(self.parent.notebook.select()) == str(self.parent.testTab2)):
+        if not (str(self.parent.notebook.select()) == str(self.parent.settings)):
             self.parent.notebook.hide(self.parent.notebook.select())
-            self.parent.notebook.add(self.parent.testTab2)
-            self.parent.notebook.select(self.parent.testTab2)
+            self.parent.notebook.add(self.parent.settings)
+            self.parent.notebook.select(self.parent.settings)
             #self.parent.notebook.tab(self.engineTab,state='normal')
         self.settingsButton.config(state=ACTIVE)
         #self.engineButton.config(state=NORMAL)

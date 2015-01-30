@@ -6,8 +6,8 @@ from Tkinter import *
 from ttk import *
 #from PIL import Image, ImageTk
 from console import console
-from testTab2 import testTab2
-from generalTab import generalTab
+from settings import settings
+from general import general
 from dashboard import dashboard
 from MenuBar import MenuBar
 from myToolBar import ToolBar
@@ -29,17 +29,17 @@ class elmodb(Tkinter.Tk):
         self.notebook = Notebook(master, name='nb')
         self.notebook.pack(fill=BOTH,expand=True)
 
-        self.generalTab = generalTab(self.notebook, name='generalTab')
-        self.notebook.add(self.generalTab, text="General")
+        self.general = general(self.notebook, name='general')
+        self.notebook.add(self.general, text="General")
 
         self.console = console(self.notebook, name='console')
         self.notebook.add(self.console, text="Console")
         self.notebook.tab(self.console,state='disabled')
         self.notebook.hide(self.console)
 
-        self.testTab2 = testTab2(self, name='secondTab')
-        self.notebook.add(self.testTab2, text="This Tab 2")
-        self.notebook.hide(self.testTab2)
+        self.settings = settings(self, name='settings')
+        self.notebook.add(self.settings, text="Settings")
+        self.notebook.hide(self.settings)
 
         self.dashboard = dashboard(self.notebook, name='dashboard')
         self.notebook.add(self.dashboard, text="Dashboard")

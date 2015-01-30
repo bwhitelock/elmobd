@@ -5,7 +5,7 @@ from Tkinter import *
 import Tkinter
 from ttk import *
 
-class generalTab(Frame):
+class general(Frame):
     #def __init__(self, master=None, device=None, name=None):
     def __init__(self, master=None, name=None):
         Frame.__init__(self, master)

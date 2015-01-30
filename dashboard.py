@@ -6,7 +6,7 @@ import Tkinter
 from ttk import *
 from testTab1 import testTab1
 from testTab2 import testTab2
-from engineTab import engineTab
+from general import general
 import Queue
 
 class dashboard(Frame):
@@ -26,8 +26,8 @@ class dashboard(Frame):
         self.notebook.pack(fill=BOTH,expand=True)
 
         #self.engineTab = engineTab(self.notebook, self.device, name='engineTab')
-        self.engineTab = engineTab(self.notebook, name='engineTab')
-        self.notebook.add(self.engineTab, text="Engine")
+        self.general = general(self.notebook, name='general')
+        self.notebook.add(self.general, text="General")
 
         #self.testTab1 = testTab1(self.notebook, self.device, name='Tab 1')
         self.testTab1 = testTab1(self.notebook, name='Tab 1')
