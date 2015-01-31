@@ -4,7 +4,8 @@
 from Tkinter import *
 import Tkinter
 from ttk import *
-from gauge import gauge
+from largeGauge import largeGauge
+from smallGauge import smallGauge
 
 class dashboard(Frame):
     def __init__(self,master=None,name=None):
@@ -12,17 +13,17 @@ class dashboard(Frame):
         self.pack(fill=BOTH)
         speedFrame = Frame(self)
         speedFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
-        speedGauge=gauge(speedFrame,125)
+        speedGauge=largeGauge(speedFrame,250)
         speedGauge.pack()
 
         middleFrame = Frame(self)
         middleFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
-        heatGauge = gauge(middleFrame,50)
+        heatGauge = smallGauge(middleFrame,125)
         heatGauge.pack(padx=2,pady=2)
-        oilGauge = gauge(middleFrame,50)
+        oilGauge = smallGauge(middleFrame,125)
         oilGauge.pack(padx=2,pady=2)
 
         rpmFrame = Frame(self)
         rpmFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
-        rpmGauge=gauge(rpmFrame,125)
+        rpmGauge=largeGauge(rpmFrame,250)
         rpmGauge.pack()

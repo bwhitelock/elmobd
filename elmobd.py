@@ -56,5 +56,5 @@ class elmodb(Tkinter.Tk):
 if __name__ == '__main__':
     app = elmodb(None)
     app.title('ELM327 OBD Interface')
-    app.geometry("300x300")
+    app.geometry("700x400")
     app.mainloop()

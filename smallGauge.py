@@ -6,7 +6,7 @@ import Tkinter as tk
 from math import cos,sin,pi
 import sys, time
 
-class gauge(Frame):
+class smallGauge(Frame):
     def __init__(self,master=None,size=200):
         Frame.__init__(self,master)
         self.size=size
