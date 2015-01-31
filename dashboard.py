@@ -4,35 +4,25 @@
 from Tkinter import *
 import Tkinter
 from ttk import *
-from testTab1 import testTab1
-from testTab2 import testTab2
-from general import general
-import Queue
+from gauge import gauge
 
 class dashboard(Frame):
-    #def __init__(self,parent,device,queue):
-    #def __init__(self,parent,device,queue):
     def __init__(self,master=None,name=None):
-        #Tkinter.Tk.__init__(self,parent)
         Frame.__init__(self,master)
-        #self.device=device
-        ##self.parent = parent
-        #self.returnQueue=queue
-        #master = Frame(self.parent, name='master')
         self.pack(fill=BOTH)
-        tabFrame = Frame(self)
-        tabFrame.pack(fill=BOTH,expand=True)
-        self.notebook = Notebook(tabFrame, name='nb')
-        self.notebook.pack(fill=BOTH,expand=True)
+        speedFrame = Frame(self)
+        speedFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
+        speedGauge=gauge(speedFrame,125)
+        speedGauge.pack()
 
-        #self.engineTab = engineTab(self.notebook, self.device, name='engineTab')
-        self.general = general(self.notebook, name='general')
-        self.notebook.add(self.general, text="General")
+        middleFrame = Frame(self)
+        middleFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
+        heatGauge = gauge(middleFrame,50)
+        heatGauge.pack(padx=2,pady=2)
+        oilGauge = gauge(middleFrame,50)
+        oilGauge.pack(padx=2,pady=2)
 
-        #self.testTab1 = testTab1(self.notebook, self.device, name='Tab 1')
-        self.testTab1 = testTab1(self.notebook, name='Tab 1')
-        self.notebook.add(self.testTab1, text="Tab 1")
-
-        #self.testTab2 = testTab2(self.notebook, self.device, name='secondTab')
-        self.testTab2 = testTab2(self.notebook, name='secondTab')
-        self.notebook.add(self.testTab2, text="Tab 2")
+        rpmFrame = Frame(self)
+        rpmFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
+        rpmGauge=gauge(rpmFrame,125)
+        rpmGauge.pack()
