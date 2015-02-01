@@ -4,6 +4,7 @@
 from Tkinter import *
 import Tkinter
 from ttk import *
+from gauge import gauge
 from largeGauge import largeGauge
 from smallGauge import smallGauge
 
@@ -13,7 +14,8 @@ class dashboard(Frame):
         self.pack(fill=BOTH)
         speedFrame = Frame(self)
         speedFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
-        speedGauge=largeGauge(speedFrame,250)
+        #speedGauge=largeGauge(speedFrame,250)
+        speedGauge=gauge(speedFrame,250)
         speedGauge.pack()
 
         middleFrame = Frame(self)
