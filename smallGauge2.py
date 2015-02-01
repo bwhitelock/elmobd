@@ -7,7 +7,7 @@ from math import cos,sin,pi,ceil
 import sys, time
 from random import randrange
 
-class gauge(Frame):
+class smallGauge2(Frame):
     def __init__(self,master,size,minValue,maxValue,stepValue):
         Frame.__init__(self,master,borderwidth=5,relief=GROOVE)
         self.size=size
@@ -27,7 +27,7 @@ class gauge(Frame):
         self.circleStart=15
         self.circleSize = size
         self.Canvas.create_oval(15,15,self.circleSize,self.circleSize, fill="blue", width=2)
-        adjust = size*.25
+        adjust = size*.35
         self.Canvas.create_arc(self.circleStart+adjust,self.circleStart+adjust,self.circleSize-adjust,self.circleSize-adjust,start=-45,extent=270,style="arc",width=2)
         self.Canvas.create_line(0,0,0,0, fill="#ffc", tags="hour")
         self.Canvas.create_line(0,0,0,0, fill="red", tags="minute")
@@ -68,19 +68,19 @@ class gauge(Frame):
 
     def makeValueLine(self,degrees,value):
         angle = degrees*pi*2/360
-        ox = (self.circleSize+self.circleStart)/2 + self.circleSize*sin(angle)*.290
-        oy = (self.circleSize+self.circleStart)/2 - self.circleSize*cos(angle)*.290
-        x1 = ox + self.circleSize*sin(angle)*.080
-        y1 = oy - self.circleSize*cos(angle)*.080
-        x2 = ox + self.circleSize*sin(angle)*.13
-        y2 = oy - self.circleSize*cos(angle)*.13
+        ox = (self.circleSize+self.circleStart)/2 + self.circleSize*sin(angle)*.110
+        oy = (self.circleSize+self.circleStart)/2 - self.circleSize*cos(angle)*.110
+        x1 = ox + self.circleSize*sin(angle)*.090
+        y1 = oy - self.circleSize*cos(angle)*.090
+        x2 = ox + self.circleSize*sin(angle)*.19
+        y2 = oy - self.circleSize*cos(angle)*.19
         self.Canvas.create_line(ox,oy,x1,y1, fill="black",width=2)
         self.Canvas.create_text(x2,y2,text=value)
 
     def makeTickLine(self,degrees):
         angle = degrees*pi*2/360
-        ox = (self.circleSize+self.circleStart)/2 + self.circleSize*sin(angle)*.295
-        oy = (self.circleSize+self.circleStart)/2 - self.circleSize*cos(angle)*.295
+        ox = (self.circleSize+self.circleStart)/2 + self.circleSize*sin(angle)*.115
+        oy = (self.circleSize+self.circleStart)/2 - self.circleSize*cos(angle)*.115
         x1 = ox + self.circleSize*sin(angle)*.070
         y1 = oy - self.circleSize*cos(angle)*.070
         self.Canvas.create_line(ox,oy,x1,y1, fill="black")
