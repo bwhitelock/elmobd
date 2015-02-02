@@ -6,6 +6,7 @@ import Tkinter as tk
 from math import cos,sin,pi,ceil
 import sys, time
 from random import randrange
+import tkFont
 
 class gauge(Frame):
     def __init__(self,master,size,minValue,maxValue,stepValue,gaugeText,tickMarks=1):
@@ -42,7 +43,10 @@ class gauge(Frame):
         redDot0=(self.circleSize+self.circleStart)/2-redDotRadius
         redDot1=(self.circleSize+self.circleStart)/2+redDotRadius
         self.Canvas.create_oval(redDot0,redDot0,redDot1,redDot1, fill="red", outline="red")
-        self.Canvas.create_text((self.circleSize+self.circleStart)/2,(self.circleSize*.80),text=gaugeText, fill="white",font=('Helvetica', 12, 'normal'))
+        thisFont = tkFont.Font()
+        print "font",thisFont['size']
+        #self.Canvas.create_text((self.circleSize+self.circleStart)/2,(self.circleSize*.90),text=gaugeText, fill="white",font=('Helvetica', 12, 'normal'))
+        self.Canvas.create_text((self.circleSize+self.circleStart)/2,(self.circleSize*.90),text=gaugeText, fill="white",font=thisFont)
         self.Canvas.create_line(0,0,0,0, fill="red", tags="dialHand")
         self.update_dial(randrange(0,maxValue))
 
@@ -55,8 +59,10 @@ class gauge(Frame):
         oy = (self.circleSize+self.circleStart)/2 - self.circleSize*cos(angle)*tempAdjust
         x1 = ox + self.circleSize*sin(angle)*.085
         y1 = oy - self.circleSize*cos(angle)*.085
-        x2 = ox + self.circleSize*sin(angle)*.13
-        y2 = oy - self.circleSize*cos(angle)*.13
+        #x2 = ox + self.circleSize*sin(angle)*.13
+        #y2 = oy - self.circleSize*cos(angle)*.13
+        x2 = ox + self.circleSize*sin(angle)*((2-(2*tempAdjust))/10)
+        y2 = oy - self.circleSize*cos(angle)*((2-(2*tempAdjust))/10)
         self.Canvas.create_line(ox,oy,x1,y1, fill="white",width=2)
         self.Canvas.create_text(x2,y2,text=value,fill="white")
 

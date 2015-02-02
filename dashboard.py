@@ -24,11 +24,13 @@ class dashboard(Frame):
         #heatGauge = smallGauge(middleFrame,125)
         tempText = u"\N{DEGREE SIGN}C"
         print "tempText",tempText
-        heatGauge = smallGauge2(middleFrame,125,0,140,20)
+        #heatGauge = smallGauge2(middleFrame,125,0,140,20)
+        heatGauge = gauge(middleFrame,125,0,140,20,tempText)
         #heatGauge.pack(padx=2,pady=2)
         heatGauge.pack()
         #oilGauge = smallGauge(middleFrame,125)
-        oilGauge = smallGauge2(middleFrame,125,0,100,10)
+        #oilGauge = smallGauge2(middleFrame,125,0,100,10)
+        oilGauge = gauge(middleFrame,125,0,100,10,"PSI")
         #oilGauge.pack(padx=2,pady=2)
         oilGauge.pack()
         middleFrame.pack(fill=BOTH,expand=True,side=LEFT,padx=4,pady=4)
