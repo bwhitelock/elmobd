@@ -4,15 +4,6 @@ import sys
 from DeviceSettings import DeviceSettings
 import serial
 
-class OBDError(Exception):
-    """Base class for exceptions in this module"""
-
-class OBDPortError(OBDError):
-    """Exception to indicate that there was an error with the port"""
-
-class OBDDataError(OBDError):
-    """Exception to indicate a data error"""
-
 class MenuBar(Tkinter.Menu):
     def __init__(self, parent):
         Tkinter.Menu.__init__(self, parent)
@@ -59,6 +50,8 @@ class MenuBar(Tkinter.Menu):
                                   timeout = 1)
             print "self._port", self.port
             print "port is open",self.port.isOpen()
+            self.parent.event_generate("<<test1>>") 
+            self.parent.event_generate("<<test2>>") 
         except serial.SerialException:
             print "serial exception"
 

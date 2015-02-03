@@ -20,6 +20,8 @@ class elmodb(Tkinter.Tk):
     def initialize(self):
         master = Frame(name='master')
         master.pack(fill=BOTH,expand=True)
+        self.bind("<<test1>>",lambda e, y=True, x=self.test1: x(y))
+        self.bind("<<test2>>",lambda e, y=False, x=self.test1: x(y))
 
         self.menubar = MenuBar(self)
         self.config(menu=self.menubar)
@@ -49,6 +51,11 @@ class elmodb(Tkinter.Tk):
         self.after(500,self.doCommand)
         #self.update()
 
+    def test1(self, flag):
+        print "test1 flag",flag
+
+    def test2(self, flag):
+        print "test2 flag",flag
 
     def doCommand(self):
         self.after(500,self.doCommand)
