@@ -21,6 +21,6 @@ class DeviceSettings(tkSimpleDialog.Dialog):
         return self.e1 # initial focus
 
     def apply(self):
-        first = self.e1.get()
-        second = self.b1.get()
-        print first, second # or something
+        self.portname = self.e1.get()
+        self.baudrate = self.b1.get()
+        #print first, second # or something
