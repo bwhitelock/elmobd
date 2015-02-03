@@ -13,22 +13,29 @@ class console(Frame):
         self.name=name
         #self.grid(sticky=N+S+E+W)
         self.pack(fill=BOTH,expand=True)
-        frame1=Frame(self)
-        frame1.pack(fill=BOTH)
+        testFrame=Frame(self)
+        testFrame.pack()
+        frame1=Frame(testFrame)
+        frame1.pack(fill=BOTH,expand=True,side=LEFT)
         #self.columnconfigure(0,weight=1)
         #self.rowconfigure(0,weight=1)
         self.entryVariable = Tkinter.StringVar()
         #self.entry = Tkinter.Entry(self,textvariable=self.entryVariable)
         self.entry = Entry(frame1,textvariable=self.entryVariable)
         #self.entry = Entry(self)
-        self.entry.bind("<Return>", self.OnPressEnter)
+        self.entry.bind("<Return>", self.onPressEnter)
         self.entryVariable.set(u"Enter text here.")
         #self.entry.grid(column=0,row=0,sticky='EW')
-        self.entry.pack(fill=X,expand=True)
+        self.entry.pack(side=LEFT,expand=True)
         self.entry.focus_set()
         self.entry.selection_range(0, Tkinter.END)
+        sendFrame=Frame(testFrame)
+        sendFrame.pack(fill=X,expand=True,side=LEFT)
+        sendButton = Button(sendFrame,text="Send",command=self.onButtonPress)
+        sendButton.bind("<Return>", self.onPressEnter)
+        sendButton.pack(side=LEFT,padx=10)
         frame2=Frame(self)
-        frame2.pack(fill=BOTH,expand=True)
+        frame2.pack(fill=BOTH,expand=True,side=BOTTOM)
         self.cText = Text(frame2)
         self.cText.pack()
 
@@ -38,8 +45,13 @@ class console(Frame):
     def enableMe(self):
         self.configure(state='normal')
 
-    def OnPressEnter(self,event):
-        #self.labelVariable.set(self.entryVariable.get()+" (You pressed ENTER)" )
+    def onPressEnter(self,event):
+        self.sendCommand()
+
+    def onButtonPress(self):
+        self.sendCommand()
+
+    def sendCommand(self):
         textVar = self.entryVariable.get()
         print "You pressed enter !", textVar
         source = ['entry',textVar]
