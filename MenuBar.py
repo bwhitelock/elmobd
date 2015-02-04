@@ -1,8 +1,9 @@
 import Tkinter
 import tkMessageBox
-import sys
+import sys, os
 from DeviceSettings import DeviceSettings
 import serial
+from obdDevice import device
 
 class MenuBar(Tkinter.Menu):
     def __init__(self, parent):
@@ -24,11 +25,11 @@ class MenuBar(Tkinter.Menu):
 
     def onSettings(self):
         d = DeviceSettings(self.parent)
-        self.portname=d.portname
-        self.baudrate=d.baudrate
+        device.portname=d.portname
+        device.baudrate=d.baudrate
         #print d.result
-        print "portname",self.portname
-        print "baudrate",self.baudrate
+        print "portname",device.portname
+        print "baudrate",device.baudrate
 
     def onClear(self):
         if tkMessageBox.askyesno("Clear", "Clear DTC data?"):
@@ -38,18 +39,19 @@ class MenuBar(Tkinter.Menu):
 
     def onConnect(self, portname=None):
         if portname:
-            self.portname = portname
-        if not self.portname:
+            device.portname = portname
+        if not device.portname:
             print "OpenPortFailed"
 
         try:
-            self.port = serial.Serial(self.portname, self.baudrate,
+            device.port = serial.Serial(device.portname, device.baudrate,
                                   serial.EIGHTBITS,
                                   serial.PARITY_NONE,
                                   serial.STOPBITS_ONE,
                                   timeout = 1)
-            print "self._port", self.port
-            print "port is open",self.port.isOpen()
+            #device.port = serial.Serial(device.portname, device.baudrate)
+            print "self._port", device.port
+            print "port is open",device.port.isOpen()
             self.parent.event_generate("<<test1>>") 
             self.parent.event_generate("<<test2>>") 
         except serial.SerialException:

@@ -4,6 +4,8 @@
 from Tkinter import *
 import Tkinter
 from ttk import *
+from obdDevice import device
+from time import sleep
 
 class console(Frame):
     #def __init__(self, master=None, device=None, name=None):
@@ -24,7 +26,7 @@ class console(Frame):
         self.entry = Entry(frame1,textvariable=self.entryVariable)
         #self.entry = Entry(self)
         self.entry.bind("<Return>", self.onPressEnter)
-        self.entryVariable.set(u"Enter text here.")
+        #self.entryVariable.set(u"Enter text here.")
         #self.entry.grid(column=0,row=0,sticky='EW')
         self.entry.pack(side=LEFT,expand=True)
         self.entry.focus_set()
@@ -52,11 +54,27 @@ class console(Frame):
         self.sendCommand()
 
     def sendCommand(self):
+        self.cText.insert(END, "start\n")
         textVar = self.entryVariable.get()
+        if not textVar:
+            textVar = ''
         print "You pressed enter !", textVar
         source = ['entry',textVar]
-        textVar = textVar + "\n"
-        self.cText.insert(END, textVar)
+        textVar = textVar.strip()
+        self.cText.insert(END, "write textVar\n")
+        device.port.write(textVar)
+        #device.port.write("\r")
+        self.cText.insert(END, "write cr\n")
+        device.port.write('\015')
+        sleep(0.5)
+        self.cText.insert(END, "read\n")
+        response = device.port.read(1024)
+        response = response.strip() + '\n'
+        self.cText.insert(END, "response\n")
+        #response = response.encode('hex')
+        #self.cText.insert(END, textVar)
+        self.cText.insert(END, response)
         #self.device.putData(source)
+        self.entryVariable.set("")
         self.entry.focus_set()
         self.entry.selection_range(0, Tkinter.END)
